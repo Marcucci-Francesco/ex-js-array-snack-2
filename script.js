@@ -49,7 +49,7 @@ const books = [
 // Snack 1
 const longBooks = books.filter(book => book.pages > 300);
 const longBooksTitle = longBooks.map(l => l.title);
-console.log(longBooksTitle);
+longBooksTitle.forEach(t => console.log(t))
 
 // Snack 2
 const availableBooks = books.filter(book => book.available);
@@ -63,3 +63,13 @@ const fullPriceBooks = discountedBooks.find(d => d.price % 1 === 0);
 console.log(fullPriceBooks);
 
 
+// Snack 3
+const authors = books.map(b => b.author);
+const areAuthorsAdults = authors.every(author => author.age >= 18);
+authors.sort((a, b) => a.age - b.age) * (areAuthorsAdults ? 1 : -1);
+
+
+// Snack 4
+const ages = books.map(b => b.author.age);
+const agesSum = ages.reduce((sum, age) => sum + age, 0);
+console.log(`The average age of the authors is: ${agesSum / ages.length}`);
